@@ -7,7 +7,7 @@ import * as graphqlUploadExpress from 'graphql-upload/graphqlUploadExpress.js';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: 'https://euphonious-sprite-a13793.netlify.app',
+    origin: process.env.ALLOW_ORIGIN,
     credentials: true,
     allowedHeaders: [
       'Accept',
@@ -34,6 +34,6 @@ async function bootstrap() {
       },
     }),
   );
-  await app.listen(process.env.PORT, '0.0.0.0');
+  await app.listen(3000);
 }
 bootstrap();
