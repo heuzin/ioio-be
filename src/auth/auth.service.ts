@@ -55,7 +55,11 @@ export class AuthService {
       },
     );
 
-    res.cookie('access_token', accessToken, { httpOnly: true });
+    res.cookie('access_token', accessToken, {
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true,
+    });
 
     return accessToken;
   }
@@ -76,8 +80,16 @@ export class AuthService {
       expiresIn: '7d',
     });
 
-    res.cookie('access_token', accessToken, { httpOnly: true });
-    res.cookie('refresh_token', refreshToken, { httpOnly: true });
+    res.cookie('access_token', accessToken, {
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true,
+    });
+    res.cookie('refresh_token', refreshToken, {
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true,
+    });
     return { user };
   }
 
